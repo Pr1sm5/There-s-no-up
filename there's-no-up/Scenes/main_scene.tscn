@@ -1,3 +1,111 @@
-[gd_scene format=3 uid="uid://cob2awvw28mv8"]
+[gd_scene load_steps=12 format=3 uid="uid://cob2awvw28mv8"]
+
+[ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
+[ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
+[ext_resource type="Script" uid="uid://b8og2hbk54dx6" path="res://Scenes/health_bar.gd" id="4_x6ack"]
+[ext_resource type="Script" uid="uid://niik57hkegrg" path="res://Scenes/fuel_bar.gd" id="5_iacmt"]
+[ext_resource type="Script" uid="uid://dl0hdmh4j7n2" path="res://Scenes/asteroid_spawner.gd" id="6_6ev3c"]
+[ext_resource type="Texture2D" uid="uid://bbkjp8eh3dwla" path="res://Assets/Sprites/StarsPara.png" id="7_76v2p"]
+[ext_resource type="Texture2D" uid="uid://ct2hyjdj230x4" path="res://Assets/Sprites/Space Background(2).png" id="7_maf8m"]
+[ext_resource type="Texture2D" uid="uid://b7sh0cfn2t0l7" path="res://Assets/Sprites/NebualPara.png" id="8_drdnd"]
+[ext_resource type="Texture2D" uid="uid://3h0lkx4hvi3l" path="res://Assets/Sprites/Space Background(1).png" id="8_huasi"]
+[ext_resource type="Texture2D" uid="uid://0xmccgk0itdu" path="res://Assets/Sprites/DustPara.png" id="10_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://x73da351yall" path="res://Assets/Sprites/PlanetsPara.png" id="11_7ewk0"]
 
 [node name="MainScene" type="Node2D"]
+
+[node name="SpaceShip" parent="." instance=ExtResource("1_52fb6")]
+
+[node name="Camera2D" type="Camera2D" parent="SpaceShip"]
+limit_enabled = false
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="Asteroid" parent="." instance=ExtResource("2_6l7je")]
+position = Vector2(578, 115)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 1.0
+offset_top = 604.0
+offset_right = 151.0
+offset_bottom = 631.0
+step = 1.0
+script = ExtResource("4_x6ack")
+
+[node name="Fuel Bar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 1002.0
+offset_top = 604.0
+offset_right = 1152.0
+offset_bottom = 631.0
+step = 1.0
+script = ExtResource("5_iacmt")
+
+[node name="Asteroid Spawner" type="Node" parent="."]
+script = ExtResource("6_6ev3c")
+asteroid_scene = ExtResource("2_6l7je")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 60)
+repeat_times = 2
+
+[node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D"]
+visible = false
+z_index = -1046
+texture = ExtResource("8_huasi")
+
+[node name="Sprite2" type="Sprite2D" parent="Background/Parallax2D"]
+z_index = -1046
+texture_filter = 1
+texture = ExtResource("7_76v2p")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(6, 0)
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 60)
+repeat_times = 2
+
+[node name="Sprite2" type="Sprite2D" parent="Background/Parallax2D2"]
+z_index = -1046
+texture = ExtResource("8_drdnd")
+offset = Vector2(0, 57.515)
+
+[node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D2"]
+visible = false
+modulate = Color(1, 1, 1, 0.24313726)
+z_index = -1046
+texture_filter = 1
+texture = ExtResource("7_maf8m")
+offset = Vector2(0, 57.515)
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(6, 0)
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 80)
+repeat_times = 2
+
+[node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D3"]
+modulate = Color(0.45840502, 0.45840508, 0.45840502, 1)
+z_index = -1046
+texture = ExtResource("11_7ewk0")
+offset = Vector2(0, 57.515)
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background"]
+scroll_offset = Vector2(6, 0)
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 100)
+repeat_times = 2
+
+[node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D4"]
+modulate = Color(1, 1, 1, 0.6039216)
+z_index = -1046
+texture = ExtResource("10_ioaeq")
+offset = Vector2(0, 57.515)

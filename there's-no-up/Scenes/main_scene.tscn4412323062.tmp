@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cob2awvw28mv8"]
+
+[ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
+[ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
+[ext_resource type="Texture2D" uid="uid://c5wlhlbrcygxi" path="res://Assets/Sprites/Space Background.png" id="3_jv6wh"]
+[ext_resource type="Script" uid="uid://b8og2hbk54dx6" path="res://Scenes/health_bar.gd" id="4_x6ack"]
+[ext_resource type="Script" uid="uid://niik57hkegrg" path="res://Scenes/fuel_bar.gd" id="5_iacmt"]
+[ext_resource type="Script" uid="uid://dl0hdmh4j7n2" path="res://Scenes/asteroid_spawner.gd" id="6_6ev3c"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="SpaceShip" parent="." instance=ExtResource("1_52fb6")]
+position = Vector2(577, 307)
+
+[node name="Camera2D" type="Camera2D" parent="SpaceShip"]
+limit_enabled = false
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
+
+[node name="Asteroid" parent="." instance=ExtResource("2_6l7je")]
+position = Vector2(578, 115)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1046
+position = Vector2(583, 307)
+texture = ExtResource("3_jv6wh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 1.0
+offset_top = 604.0
+offset_right = 151.0
+offset_bottom = 631.0
+step = 1.0
+script = ExtResource("4_x6ack")
+
+[node name="Fuel Bar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 1002.0
+offset_top = 604.0
+offset_right = 1152.0
+offset_bottom = 631.0
+step = 1.0
+script = ExtResource("5_iacmt")
+
+[node name="Asteroid Spawner" type="Node" parent="."]
+script = ExtResource("6_6ev3c")
+asteroid_scene = ExtResource("2_6l7je")
