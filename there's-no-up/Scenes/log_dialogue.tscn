@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://chqcv7trpupsg"]
+
+[ext_resource type="Script" uid="uid://4phwiit2mia5" path="res://Scenes/log_dialogue.gd" id="1_j8kyd"]
+
+[node name="LogDialogue" type="Node2D"]
+script = ExtResource("1_j8kyd")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "LOG_T-209999999:"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_direction = 2
+offset_top = 23.0
+offset_right = 450.0
+offset_bottom = 31.0
+theme_override_colors/font_readonly_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+text = "AAAAAAdsadsatwrwe"
+editable = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+wrap_mode = 1

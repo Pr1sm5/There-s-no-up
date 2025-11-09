@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch40w7njoymow"]
+
+[ext_resource type="Script" uid="uid://csinx4g733rkn" path="res://Scenes/nav_guide.gd" id="1_d3lfv"]
+[ext_resource type="Texture2D" uid="uid://ujsd73a4mehv" path="res://Assets/Sprites/Compass2.png" id="2_d3lfv"]
+[ext_resource type="Texture2D" uid="uid://cc7hpacdueb6p" path="res://Assets/Sprites/compass21.png" id="3_7gbis"]
+
+[node name="NavGuide" type="Node2D"]
+scale = Vector2(1.4, 1.4)
+script = ExtResource("1_d3lfv")
+
+[node name="Ring" type="Sprite2D" parent="."]
+texture = ExtResource("2_d3lfv")
+
+[node name="Needle" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7gbis")

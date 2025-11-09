@@ -4,8 +4,9 @@ extends CharacterBody2D
 @export var rotation_speed : float = 3
 @export var health : int = 100
 @export var fuel : float = 100
-@export var emp_amount : int = 1
+@export var emp_amount : int = 900
 @export var bullet_scene : PackedScene
+@export var emp_scene : PackedScene
 @export var shoot_cooldown : float = 0.25
 
 
@@ -26,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	update_from_global()
 
 func _process(delta: float) -> void:
-	
+	use_emp()
 	
 	return
 
@@ -35,7 +36,7 @@ func move_ship():
 	var normal_direction = input_direction.normalized().rotated(rotation)
 	velocity = normal_direction * speed
 	if normal_direction.length() > 0:
-		fuel -= 0.05
+		fuel -= 0.025
 		update_global()
 	move_and_slide()
 	
@@ -43,6 +44,19 @@ func move_ship():
 func rotate_ship(delta):
 	rotation_direction = Input.get_axis("rotate_left", "rotate_right")
 	rotation += rotation_direction * rotation_speed * delta
+
+
+func use_emp():
+	if (!Input.is_action_just_pressed("emp")):
+		return
+	if emp_amount <= 0:
+		return
+	var emp = emp_scene.instantiate()
+	emp.position = global_position
+	get_tree().current_scene.add_child(emp)
+	emp_amount -= 1
+	print("Spawning EMP")
+
 
 func shoot():
 	if (!Input.is_action_pressed("shoot")):

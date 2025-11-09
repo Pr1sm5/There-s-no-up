@@ -23,3 +23,6 @@ func _on_body_entered(body):
 		queue_free()
 		body.take_damage(3)
 	return
+
+func explode():
+	queue_free()

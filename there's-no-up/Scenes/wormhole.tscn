@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://4m7akc2a1r26"]
+
+[ext_resource type="Script" uid="uid://c23tlt647ei03" path="res://Scenes/wormhole.gd" id="1_aha26"]
+[ext_resource type="Texture2D" uid="uid://bwdgwwumqp8dl" path="res://Assets/Sprites/PixelSpiele-ezgif.com-gif-to-sprite-converter.png" id="1_nwpsk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwpsk"]
+radius = 125.299644
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aha26"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enfoi"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2r2g"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro4t1"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c0yo"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcxpu"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqs3w"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bghnx"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1omcc"]
+atlas = ExtResource("1_nwpsk")
+region = Rect2(960, 320, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_envw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aha26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enfoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2r2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro4t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c0yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcxpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqs3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bghnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1omcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="wormhole" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_aha26")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-35, 6)
+shape = SubResource("CircleShape2D_nwpsk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 6
+sprite_frames = SubResource("SpriteFrames_envw2")
+frame = 3
+frame_progress = 0.22125466

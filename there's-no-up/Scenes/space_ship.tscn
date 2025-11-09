@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6cmdom0a2q5m"]
+[gd_scene load_steps=8 format=3 uid="uid://c6cmdom0a2q5m"]
 
 [ext_resource type="Script" uid="uid://dxp2o1j3ov00t" path="res://Assets/Scripts/SpaceShip.gd" id="1_65coa"]
 [ext_resource type="Texture2D" uid="uid://1iwnfbvulbfr" path="res://Assets/Sprites/Space_ship.png" id="2_yepno"]
 [ext_resource type="PackedScene" uid="uid://dyyoj1tkoga2t" path="res://Scenes/bullet.tscn" id="3_lsdxw"]
+[ext_resource type="PackedScene" uid="uid://dsxryouv3pu70" path="res://Scenes/emp.tscn" id="3_njdtb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_so2yi"]
 animations = [{
@@ -26,6 +27,7 @@ radius = 15.033297
 collision_mask = 3
 script = ExtResource("1_65coa")
 bullet_scene = ExtResource("3_lsdxw")
+emp_scene = ExtResource("3_njdtb")
 
 [node name="Bullets" type="Node" parent="."]
 

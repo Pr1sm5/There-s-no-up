@@ -34,10 +34,37 @@ func spawn_asteroid(type):
 	if !can_spawn:
 		return
 	can_spawn = false
+
 	var asteroid = asteroid_scene.instantiate()
 	asteroid.asteroid_type = type
+
+	# Random X position around the player
 	var random_x = randf_range(-600, 600)
-	asteroid.global_position = Vector2(Global.player_position.x + random_x , Global.player_position.y - 400)
+
+	# Randomly spawn above or below
+	var spawn_above = randf() < 0.5
+	var offset_y = randf_range(400, 600)
+	var random_y = -offset_y if spawn_above else offset_y
+
+	# Spawn position
+	var spawn_pos = Vector2(
+		Global.player_position.x + random_x,
+		Global.player_position.y + random_y
+	)
+	asteroid.global_position = spawn_pos
+
+	# --- DIRECTION & VELOCITY ---
+	# Compute direction toward player (with slight randomness)
+	var direction = (Global.player_position - spawn_pos).normalized()
+	direction = direction.rotated(randf_range(-0.3, 0.3))  # add spread in radians (~±11°)
+
+	# Assign velocity — this depends on how your asteroid moves
+	# (assuming your asteroid has a `velocity` variable)
+	var speed = randf_range(150, 300)
+	asteroid.direction = direction
+	var rand_rot = randf_range(0, 360)
+	asteroid.rotation = deg_to_rad(rand_rot)
+
 	add_child(asteroid)
-	print("Spawning Asteroid")
+	print("Spawning Asteroid at ", spawn_pos, " moving toward player")
 	reset_spawner()
