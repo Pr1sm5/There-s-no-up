@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bon0xntghmjlv"
+path="res://.godot/imported/EMP explosion.mp3-463f8e3244c92e11884f62f70e776a45.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/EMP explosion.mp3"
+dest_files=["res://.godot/imported/EMP explosion.mp3-463f8e3244c92e11884f62f70e776a45.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

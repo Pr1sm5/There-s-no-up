@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ch3jlubsnjj6p"
+path="res://.godot/imported/refuel sound.mp3-1ef152969971f22450b317d26db7dbb5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/refuel sound.mp3"
+dest_files=["res://.godot/imported/refuel sound.mp3-1ef152969971f22450b317d26db7dbb5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

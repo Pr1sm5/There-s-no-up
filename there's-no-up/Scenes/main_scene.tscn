@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cob2awvw28mv8"]
+[gd_scene load_steps=28 format=3 uid="uid://cob2awvw28mv8"]
 
 [ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://ua0mhljuw3b7" path="res://Assets/Sprites/Space L1/Space Background(9).png" id="20_8edxt"]
 [ext_resource type="Texture2D" uid="uid://544ujtq73qko" path="res://Assets/Sprites/Space L3/Space Background(10).png" id="23_15kh8"]
 [ext_resource type="Texture2D" uid="uid://d4b6c5h3lqj1m" path="res://Assets/Sprites/Space L4/Space Background(14).png" id="24_viu5a"]
+[ext_resource type="AudioStream" uid="uid://q5pbvpsr74yg" path="res://Assets/Sounds/spaceship engine.mp3" id="27_xle81"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -157,3 +158,9 @@ l1_sprite = ExtResource("20_8edxt")
 l2_sprite = ExtResource("10_ioaeq")
 l3_sprite = ExtResource("18_s8qe6")
 l4_sprite = ExtResource("19_yb0ja")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_xle81")
+volume_db = -31.486
+autoplay = true
+parameters/looping = true

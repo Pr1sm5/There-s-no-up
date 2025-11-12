@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxcl0103v3i3i"
+path="res://.godot/imported/idle portal.mp3-88489f09eef18263a23a11cad6eaa9f5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/idle portal.mp3"
+dest_files=["res://.godot/imported/idle portal.mp3-88489f09eef18263a23a11cad6eaa9f5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

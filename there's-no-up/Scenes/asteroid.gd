@@ -29,6 +29,10 @@ enum {NORMAL, VOLATILE, BIO, METAL}
 @export var volatile_timer : float = 5
 @export var chunk_scene: PackedScene
 
+@export_group("Other Stuff")
+@export var pick_up : PackedScene
+
+
 @onready var sprite = $Sprite2D
 
 var min_scale = 0.3
@@ -44,19 +48,25 @@ func _ready() -> void:
 	print(str(asteroid_type))
 	volatile_exploder(volatile_timer)
 
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	rotation += 0.02
+
 
 func take_damage(amount: int) -> void:
 	health -= amount
 	
 	if health <= 0:
-		if asteroid_type == BIO:
-			Global.player_fuel += type_bio
-		if asteroid_type == METAL:
-			Global.player_health += type_metal
+		#if asteroid_type == BIO:
+		#	return
+		#	#Global.player_fuel += type_bio
+		#if asteroid_type == METAL:
+		#	return
+		#	#Global.player_health += type_metal
+		#print(he)
 		explode()
+
 
 func randomise_scale():
 	var new_scale = randf_range(min_scale, max_scale)
@@ -64,11 +74,43 @@ func randomise_scale():
 	
 	speed = base_speed * (max_scale / new_scale)
 
+
 func explode():
 	if asteroid_type == VOLATILE:
 		volatile_exploder(0)
 		return
+	if asteroid_type == BIO or asteroid_type == METAL:
+		pick_up_exploder()
 	queue_free()
+
+
+func pick_up_exploder():
+	var chunk_count = 5
+	var explosion_radius = 25
+	var chunk_speed = 200
+	var ch_type
+	if asteroid_type == BIO:
+		ch_type = true
+	else:
+		ch_type = false
+	queue_free()
+	for i in range(chunk_count):
+		# Calculate angle around the circle
+		var angle = i * TAU / chunk_count
+		
+		# Instance a chunk
+		var chunk = pick_up.instantiate()
+		chunk.type_bool = ch_type
+		get_tree().root.add_child(chunk)
+		
+		# Set its position and velocity
+		chunk.global_position = global_position
+		var direction = Vector2(cos(angle), sin(angle))
+		chunk.direction = direction
+		
+		# Optionally add a small random rotation for visual chaos
+		chunk.rotation = randf() * TAU
+
 
 func volatile_explode():
 	# Number of chunks to spawn
@@ -83,7 +125,7 @@ func volatile_explode():
 		# Instance a chunk
 		var chunk = chunk_scene.instantiate()
 		get_parent().add_child(chunk)
-		
+		chunk.is_chunk = true
 		# Set its position and velocity
 		chunk.global_position = global_position
 		var direction = Vector2(cos(angle), sin(angle))
@@ -100,6 +142,7 @@ func volatile_exploder(time):
 	volatile_explode()
 	
 	
+
 
 func change_type():
 	if asteroid_type == NORMAL:

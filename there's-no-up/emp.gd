@@ -12,6 +12,7 @@ func _ready() -> void:
 	shape.shape = shape.shape.duplicate()
 	anim_sprite.animation_finished.connect(_on_animation_finished)
 	anim_sprite.play()
+	$AudioStreamPlayer.play()
 
 func _process(delta: float) -> void:
 	shape.shape.radius+= 3.3
@@ -27,4 +28,8 @@ func _on_body_entered(body):
 	body.explode()
 
 func _on_animation_finished():
-	queue_free()  # optional: remove node after animation finishes
+	var audio = $AudioStreamPlayer
+	remove_child(audio)                # Detach from this node
+	get_tree().root.add_child(audio)   # Reparent to scene root (so it's not deleted)
+	audio.connect("finished", audio.queue_free)  # Clean it up after it ends
+	queue_free()

@@ -6,22 +6,56 @@ extends Node2D
 @export var tex_fuel : Texture2D
 @export var tex_shield : Texture2D
 
+@export var fuel_sound : AudioStreamMP3
+@export var shield_sound : AudioStreamMP3
+
+var explode_speed = 200
+
 var type_bool = false
+
+var direction
+var is_exploding = true
+
 
 func _ready() -> void:
 	if type_bool:
-		tex = tex_fuel
+		$Sprite2D.texture = tex_fuel
+		$AudioStreamPlayer.stream = fuel_sound
 	else:
-		tex = tex_shield
+		$Sprite2D.texture = tex_shield
+		$AudioStreamPlayer.stream = shield_sound
+	
+	
+	explo_timer()
 	
 	area.body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
-	position = position.move_toward(Global.player_position, delta * 600)
+	if is_exploding:
+		push_outside(delta)
+	if !is_exploding:
+		position = position.move_toward(Global.player_position, delta * 600)
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		$AudioStreamPlayer.pitch_scale = randf_range(0.8, 1.2)
+		$AudioStreamPlayer.play()
+		
 		if type_bool:
-			Global.player_fuel += 10
+			Global.player_fuel += 2
 		else:
-			Global.player_health += 10
+			Global.player_health += 2
+		
+		var audio = $AudioStreamPlayer
+		remove_child(audio)                # Detach from this node
+		get_tree().root.add_child(audio)   # Reparent to scene root (so it's not deleted)
+		audio.connect("finished", audio.queue_free)  # Clean it up after it ends
+		queue_free()
+
+func push_outside(delta):
+	position += direction * explode_speed * delta
+
+func explo_timer():
+	await get_tree().create_timer(0.2).timeout
+	is_exploding = false
+	
