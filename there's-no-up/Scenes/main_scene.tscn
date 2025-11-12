@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cob2awvw28mv8"]
+[gd_scene load_steps=27 format=3 uid="uid://cob2awvw28mv8"]
 
 [ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
@@ -14,7 +14,18 @@
 [ext_resource type="Texture2D" uid="uid://0xmccgk0itdu" path="res://Assets/Sprites/DustPara.png" id="10_ioaeq"]
 [ext_resource type="Texture2D" uid="uid://x73da351yall" path="res://Assets/Sprites/PlanetsPara.png" id="11_7ewk0"]
 [ext_resource type="PackedScene" uid="uid://4m7akc2a1r26" path="res://Scenes/wormhole.tscn" id="12_drdnd"]
+[ext_resource type="Script" uid="uid://o6m15447jt7o" path="res://Scenes/BackgroundSprite.gd" id="12_gnsmo"]
+[ext_resource type="Texture2D" uid="uid://bkr5g2u8ldflt" path="res://Assets/Sprites/Space L1/Space Background(7).png" id="13_psl12"]
+[ext_resource type="Texture2D" uid="uid://c6eby08me3do" path="res://Assets/Sprites/Space L3/Space Background(7).png" id="14_5bov3"]
+[ext_resource type="Texture2D" uid="uid://c5lc7t8urdsj5" path="res://Assets/Sprites/Space L1/Space Background(8).png" id="15_jvnna"]
 [ext_resource type="Script" uid="uid://b7cofwkvlovep" path="res://Scenes/wormhole_spawner.gd" id="15_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://bes2qhn7x6oai" path="res://Assets/Sprites/Space L4/Space Background(11).png" id="15_xle81"]
+[ext_resource type="Texture2D" uid="uid://d1f0iyvarvgx1" path="res://Assets/Sprites/Space L1/Space Background(10).png" id="18_b48ew"]
+[ext_resource type="Texture2D" uid="uid://cjpuik0wprg74" path="res://Assets/Sprites/Space L3/Space Background(8).png" id="18_s8qe6"]
+[ext_resource type="Texture2D" uid="uid://bseifsovgf7u6" path="res://Assets/Sprites/Space L4/Space Background(12).png" id="19_yb0ja"]
+[ext_resource type="Texture2D" uid="uid://ua0mhljuw3b7" path="res://Assets/Sprites/Space L1/Space Background(9).png" id="20_8edxt"]
+[ext_resource type="Texture2D" uid="uid://544ujtq73qko" path="res://Assets/Sprites/Space L3/Space Background(10).png" id="23_15kh8"]
+[ext_resource type="Texture2D" uid="uid://d4b6c5h3lqj1m" path="res://Assets/Sprites/Space L4/Space Background(14).png" id="24_viu5a"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -83,6 +94,11 @@ texture = ExtResource("8_huasi")
 z_index = -1046
 texture_filter = 1
 texture = ExtResource("7_76v2p")
+script = ExtResource("12_gnsmo")
+l1_sprite = ExtResource("13_psl12")
+l2_sprite = ExtResource("7_76v2p")
+l3_sprite = ExtResource("14_5bov3")
+l4_sprite = ExtResource("15_xle81")
 
 [node name="Parallax2D2" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.4, 0.4)
@@ -94,6 +110,11 @@ repeat_times = 2
 z_index = -1046
 texture = ExtResource("8_drdnd")
 offset = Vector2(0, 57.515)
+script = ExtResource("12_gnsmo")
+l1_sprite = ExtResource("15_jvnna")
+l2_sprite = ExtResource("8_drdnd")
+l3_sprite = ExtResource("18_s8qe6")
+l4_sprite = ExtResource("19_yb0ja")
 
 [node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D2"]
 visible = false
@@ -114,6 +135,11 @@ modulate = Color(0.45840502, 0.45840508, 0.45840502, 1)
 z_index = -1046
 texture = ExtResource("11_7ewk0")
 offset = Vector2(0, 57.515)
+script = ExtResource("12_gnsmo")
+l1_sprite = ExtResource("18_b48ew")
+l2_sprite = ExtResource("11_7ewk0")
+l3_sprite = ExtResource("23_15kh8")
+l4_sprite = ExtResource("24_viu5a")
 
 [node name="Parallax2D4" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.7, 0.7)
@@ -126,3 +152,8 @@ modulate = Color(1, 1, 1, 0.6039216)
 z_index = -1046
 texture = ExtResource("10_ioaeq")
 offset = Vector2(0, 57.515)
+script = ExtResource("12_gnsmo")
+l1_sprite = ExtResource("20_8edxt")
+l2_sprite = ExtResource("10_ioaeq")
+l3_sprite = ExtResource("18_s8qe6")
+l4_sprite = ExtResource("19_yb0ja")

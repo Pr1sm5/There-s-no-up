@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl8vluilqndxq"]
+
+[ext_resource type="Texture2D" uid="uid://bi2g6hbgebj8k" path="res://Assets/Sprites/fuel_pickup.png" id="1_kcluc"]
+[ext_resource type="Script" uid="uid://bm7ndf4mk8m5q" path="res://Scenes/pick_up.gd" id="1_vjksl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjksl"]
+radius = 21.023796
+
+[node name="PickUp" type="Node2D"]
+script = ExtResource("1_vjksl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vjksl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kcluc")

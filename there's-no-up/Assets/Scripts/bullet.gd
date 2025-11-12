@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var detection_area : Area2D = $DetectionArea
+@onready var tex : Texture2D = $Sprite2D.texture
+
+var is_chunk = false
 
 var active : bool = true
 var speed : float = 600
@@ -15,6 +18,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if active:
 		position += direction * speed * delta
+	if is_chunk:
+		rotation += 0.02
 
 func _on_body_entered(body):
 	print("SMTH HIT")
