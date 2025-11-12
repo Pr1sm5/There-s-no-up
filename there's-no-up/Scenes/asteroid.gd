@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-enum {NORMAL, VOLATILE, BIO, METAL}
+enum {NORMAL, VOLATILE, BIO, METAL, SHIPWRECK}
 @export var normal_image: Texture2D = preload("res://Assets/Sprites/asteroid2.png")
+
 
 @export var health : int = 3
 @export var damage : int = 5
@@ -18,7 +19,7 @@ enum {NORMAL, VOLATILE, BIO, METAL}
 @export_group("Metal-Asteroids")
 @export var metal_image: Texture2D = preload("res://Assets/Sprites/asteroid.png")
 @export var type_metal :int = 10  # Amount of health the player gets
-@export var metal_health : int = 9
+@export var metal_health : int = 6
 @export var metal_speed : float = 80
 
 @export_group("Voletile-Asteroids")
@@ -28,6 +29,13 @@ enum {NORMAL, VOLATILE, BIO, METAL}
 @export var voletile_speed : float = 80
 @export var volatile_timer : float = 5
 @export var chunk_scene: PackedScene
+
+@export_group("Shipwreck")
+@export var shipwreck_image: Texture2D
+@export var type_shipwreck : int
+@export var shipwreck_health : int
+@export var shipwreck_speed : float = 50
+
 
 @export_group("Other Stuff")
 @export var pick_up : PackedScene
@@ -81,6 +89,9 @@ func explode():
 		return
 	if asteroid_type == BIO or asteroid_type == METAL:
 		pick_up_exploder()
+	if asteroid_type == SHIPWRECK:
+		if Global.player_emp_amount <= 0:
+			Global.player_emp_amount = 1
 	queue_free()
 
 
@@ -114,7 +125,7 @@ func pick_up_exploder():
 
 func volatile_explode():
 	# Number of chunks to spawn
-	var chunk_count = 12
+	var chunk_count = type_voletile
 	var explosion_radius = 16
 	var chunk_speed = 200
 	queue_free()
@@ -165,3 +176,9 @@ func change_type():
 		speed = voletile_speed
 		scale = Vector2(1,1)
 		sprite.texture = volatile_image
+	
+	if asteroid_type == SHIPWRECK:
+		health = shipwreck_health
+		speed = shipwreck_speed
+		scale = Vector2(1.2 ,1.2)
+		sprite.texture = shipwreck_image

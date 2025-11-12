@@ -1,18 +1,23 @@
-[gd_scene load_steps=28 format=3 uid="uid://cob2awvw28mv8"]
+[gd_scene load_steps=35 format=3 uid="uid://cob2awvw28mv8"]
 
 [ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
+[ext_resource type="Script" uid="uid://d1vin68uxb8y6" path="res://camera_2d.gd" id="2_s8qe6"]
 [ext_resource type="PackedScene" uid="uid://chqcv7trpupsg" path="res://Scenes/log_dialogue.tscn" id="3_7ewk0"]
 [ext_resource type="Script" uid="uid://b8og2hbk54dx6" path="res://Scenes/health_bar.gd" id="4_x6ack"]
 [ext_resource type="Script" uid="uid://niik57hkegrg" path="res://Scenes/fuel_bar.gd" id="5_iacmt"]
 [ext_resource type="PackedScene" uid="uid://ch40w7njoymow" path="res://Scenes/nav_guide.tscn" id="5_ioaeq"]
 [ext_resource type="Script" uid="uid://dl0hdmh4j7n2" path="res://Scenes/asteroid_spawner.gd" id="6_6ev3c"]
+[ext_resource type="Texture2D" uid="uid://dpohwud5fa7ra" path="res://Assets/Sprites/New_Piskel291.png" id="6_15kh8"]
+[ext_resource type="Texture2D" uid="uid://c51857n8t17by" path="res://Assets/Sprites/New_Piskel29.png" id="6_yb0ja"]
 [ext_resource type="Texture2D" uid="uid://bbkjp8eh3dwla" path="res://Assets/Sprites/StarsPara.png" id="7_76v2p"]
 [ext_resource type="Texture2D" uid="uid://ct2hyjdj230x4" path="res://Assets/Sprites/Space Background(2).png" id="7_maf8m"]
 [ext_resource type="Texture2D" uid="uid://b7sh0cfn2t0l7" path="res://Assets/Sprites/NebualPara.png" id="8_drdnd"]
 [ext_resource type="Texture2D" uid="uid://3h0lkx4hvi3l" path="res://Assets/Sprites/Space Background(1).png" id="8_huasi"]
 [ext_resource type="Texture2D" uid="uid://0xmccgk0itdu" path="res://Assets/Sprites/DustPara.png" id="10_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://fmr5jwlucr01" path="res://Assets/Sprites/New_Piskel30.png" id="10_viu5a"]
 [ext_resource type="Texture2D" uid="uid://x73da351yall" path="res://Assets/Sprites/PlanetsPara.png" id="11_7ewk0"]
+[ext_resource type="Script" uid="uid://wrqn5cs263yg" path="res://Scenes/emp.gd" id="11_b00ha"]
 [ext_resource type="PackedScene" uid="uid://4m7akc2a1r26" path="res://Scenes/wormhole.tscn" id="12_drdnd"]
 [ext_resource type="Script" uid="uid://o6m15447jt7o" path="res://Scenes/BackgroundSprite.gd" id="12_gnsmo"]
 [ext_resource type="Texture2D" uid="uid://bkr5g2u8ldflt" path="res://Assets/Sprites/Space L1/Space Background(7).png" id="13_psl12"]
@@ -24,8 +29,10 @@
 [ext_resource type="Texture2D" uid="uid://cjpuik0wprg74" path="res://Assets/Sprites/Space L3/Space Background(8).png" id="18_s8qe6"]
 [ext_resource type="Texture2D" uid="uid://bseifsovgf7u6" path="res://Assets/Sprites/Space L4/Space Background(12).png" id="19_yb0ja"]
 [ext_resource type="Texture2D" uid="uid://ua0mhljuw3b7" path="res://Assets/Sprites/Space L1/Space Background(9).png" id="20_8edxt"]
+[ext_resource type="Texture2D" uid="uid://xmt88gfh2tda" path="res://Assets/Sprites/Space L5/Space Background(15).png" id="21_rpyod"]
 [ext_resource type="Texture2D" uid="uid://544ujtq73qko" path="res://Assets/Sprites/Space L3/Space Background(10).png" id="23_15kh8"]
 [ext_resource type="Texture2D" uid="uid://d4b6c5h3lqj1m" path="res://Assets/Sprites/Space L4/Space Background(14).png" id="24_viu5a"]
+[ext_resource type="Texture2D" uid="uid://cva1g3b8g8lst" path="res://Assets/Sprites/Space L5/Space Background(14).png" id="26_mplvr"]
 [ext_resource type="AudioStream" uid="uid://q5pbvpsr74yg" path="res://Assets/Sounds/spaceship engine.mp3" id="27_xle81"]
 
 [node name="MainScene" type="Node2D"]
@@ -38,6 +45,7 @@ limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("2_s8qe6")
 
 [node name="Asteroid" parent="." instance=ExtResource("2_6l7je")]
 position = Vector2(578, 115)
@@ -50,25 +58,49 @@ scale = Vector2(1, 0.9810866)
 
 [node name="Health" type="ProgressBar" parent="CanvasLayer"]
 custom_minimum_size = Vector2(150, 0)
-offset_left = 1.0
-offset_top = 604.0
-offset_right = 151.0
-offset_bottom = 631.0
+offset_left = 49.0
+offset_top = 602.0
+offset_right = 199.0
+offset_bottom = 629.0
 step = 1.0
 script = ExtResource("4_x6ack")
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Health"]
+texture_filter = 1
+position = Vector2(54, 8)
+scale = Vector2(2.095, 2.095)
+texture = ExtResource("6_15kh8")
+
 [node name="Fuel Bar" type="ProgressBar" parent="CanvasLayer"]
 custom_minimum_size = Vector2(150, 0)
-offset_left = 1002.0
-offset_top = 604.0
-offset_right = 1152.0
-offset_bottom = 631.0
+offset_left = 952.0
+offset_top = 608.0
+offset_right = 1102.0
+offset_bottom = 635.0
 step = 1.0
+fill_mode = 1
 script = ExtResource("5_iacmt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Fuel Bar"]
+texture_filter = 1
+position = Vector2(97, 7)
+scale = Vector2(2.095, 2.095)
+texture = ExtResource("6_yb0ja")
+flip_h = true
 
 [node name="NavGuide" parent="CanvasLayer" instance=ExtResource("5_ioaeq")]
 position = Vector2(1062, 72)
 scale = Vector2(1.7, 1.7)
+
+[node name="EMP" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(35, 545)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_viu5a")
+script = ExtResource("11_b00ha")
+
+[node name="Asteroid" parent="CanvasLayer" instance=ExtResource("2_6l7je")]
+position = Vector2(239, 408)
 
 [node name="Asteroid Spawner" type="Node" parent="."]
 script = ExtResource("6_6ev3c")
@@ -100,6 +132,7 @@ l1_sprite = ExtResource("13_psl12")
 l2_sprite = ExtResource("7_76v2p")
 l3_sprite = ExtResource("14_5bov3")
 l4_sprite = ExtResource("15_xle81")
+l5_sprite = ExtResource("21_rpyod")
 
 [node name="Parallax2D2" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.4, 0.4)
@@ -116,6 +149,7 @@ l1_sprite = ExtResource("15_jvnna")
 l2_sprite = ExtResource("8_drdnd")
 l3_sprite = ExtResource("18_s8qe6")
 l4_sprite = ExtResource("19_yb0ja")
+l5_sprite = ExtResource("26_mplvr")
 
 [node name="Sprite1" type="Sprite2D" parent="Background/Parallax2D2"]
 visible = false
@@ -141,6 +175,7 @@ l1_sprite = ExtResource("18_b48ew")
 l2_sprite = ExtResource("11_7ewk0")
 l3_sprite = ExtResource("23_15kh8")
 l4_sprite = ExtResource("24_viu5a")
+l5_sprite = ExtResource("24_viu5a")
 
 [node name="Parallax2D4" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.7, 0.7)
@@ -158,6 +193,7 @@ l1_sprite = ExtResource("20_8edxt")
 l2_sprite = ExtResource("10_ioaeq")
 l3_sprite = ExtResource("18_s8qe6")
 l4_sprite = ExtResource("19_yb0ja")
+l5_sprite = ExtResource("24_viu5a")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_xle81")

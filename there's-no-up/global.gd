@@ -14,3 +14,7 @@ var portal_pos : Vector2 = Vector2.ZERO
 
 #Level
 var level_index = 0
+
+
+#Camera
+var shake_camera = false

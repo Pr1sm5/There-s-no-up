@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://013ms2sbdeo0"]
+
+[ext_resource type="Script" uid="uid://chmley4xynndd" path="res://shipwreck.gd" id="1_o3p3f"]
+[ext_resource type="Texture2D" uid="uid://c6v127yisppoo" path="res://Assets/Sprites/broken_spaceship.png" id="2_to8lo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa0rm"]
+radius = 24.5153
+
+[node name="Shipwreck" type="Node2D"]
+script = ExtResource("1_o3p3f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_to8lo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wa0rm")

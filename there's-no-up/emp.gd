@@ -11,7 +11,9 @@ func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
 	shape.shape = shape.shape.duplicate()
 	anim_sprite.animation_finished.connect(_on_animation_finished)
+	anim_sprite.modulate.a = 0.7
 	anim_sprite.play()
+	Global.shake_camera = true
 	$AudioStreamPlayer.play()
 
 func _process(delta: float) -> void:

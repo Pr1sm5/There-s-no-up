@@ -8,8 +8,10 @@ func _ready() -> void:
 
 
 func random_position():
-	var rand_x = randf_range(-500, 500)
-	var rand_y = randf_range(300, 600)
+	if Global.level_index == 4:
+		return
+	var rand_x = randf_range(-5000, 5000) * (Global.level_index + 0.5)* 0.5
+	var rand_y = randf_range(3000, 6000) * (Global.level_index + 0.5) * 0.5
 	
 	var above = randf() < 0.5
 	
@@ -18,6 +20,8 @@ func random_position():
 	
 	var hole = wormhole.instantiate()
 	hole.global_position = Vector2(rand_x, rand_y)
+	Global.portal_pos = hole.global_position
 	hole.change_pos(rand_x, rand_y)
 	print(hole.global_position)
 	get_parent().add_child(hole)
+	hole.change_pos(rand_x, rand_y)

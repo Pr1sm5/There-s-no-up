@@ -4,9 +4,8 @@ extends Node2D
 @onready var area = $Area2D
 
 
-
-
 func _ready() -> void:
+	global_position = Vector2(1000.0,1000.0)
 	area.body_entered.connect(_on_body_entered)
 	anim_sprite.play("default")
 	print("SPAWNING PORTAL")
@@ -32,14 +31,12 @@ func audio_volume_scaler(player: Node2D):
 	if not is_instance_valid(player):
 		return
 	
-	var max_hear_distance := 3000  # beyond this, sound is silent
-	var min_hear_distance := 50.0   # within this, sound is full volume
+	var max_hear_distance := 3000  
+	var min_hear_distance := 50.0 
 	
 	var distance := global_position.distance_to(player.global_position)
 	
-	# Clamp distance so we don't go below 0 or above max distance
 	distance = clamp(distance, min_hear_distance, max_hear_distance)
 	
-	# Map distance to volume range (0 dB to -60 dB, for example)
 	var volume_db: float = lerp(-10.0, -60.0, (distance - min_hear_distance) / (max_hear_distance - min_hear_distance))	
 	$AudioStreamPlayer.volume_db = volume_db

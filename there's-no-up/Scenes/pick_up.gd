@@ -42,9 +42,15 @@ func _on_body_entered(body):
 		$AudioStreamPlayer.play()
 		
 		if type_bool:
-			Global.player_fuel += 2
+			Global.player_fuel += 3
+			if Global.player_fuel >= 100:
+				Global.player_fuel = 100
 		else:
 			Global.player_health += 2
+			if Global.player_health >= 100:
+				Global.player_health = 100
+		
+		body.update_from_global()
 		
 		var audio = $AudioStreamPlayer
 		remove_child(audio)                # Detach from this node

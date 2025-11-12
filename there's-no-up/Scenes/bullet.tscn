@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
 radius = 7.0
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" groups=["bullet"]]
 script = ExtResource("1_xjght")
 tex = ExtResource("2_6afsh")
 tex2 = ExtResource("3_odot3")

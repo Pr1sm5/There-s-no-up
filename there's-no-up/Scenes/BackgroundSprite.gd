@@ -4,6 +4,7 @@ extends Sprite2D
 @export var l2_sprite : Texture2D
 @export var l3_sprite : Texture2D
 @export var l4_sprite : Texture2D
+@export var l5_sprite : Texture2D
 
 @onready var tex = self.texture
 
@@ -15,7 +16,8 @@ func _ready() -> void:
 		l1_sprite,
 		l2_sprite,
 		l3_sprite,
-		l4_sprite
+		l4_sprite,
+		l5_sprite
 	]
 	
 	choose_sprite()

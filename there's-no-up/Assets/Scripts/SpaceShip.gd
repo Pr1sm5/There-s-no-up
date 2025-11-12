@@ -4,11 +4,14 @@ extends CharacterBody2D
 @export var rotation_speed : float = 3
 @export var health : int = 100
 @export var fuel : float = 100
-@export var emp_amount : int = 900
+@export var emp_amount : int = 1
 @export var bullet_scene : PackedScene
 @export var emp_scene : PackedScene
 @export var shoot_cooldown : float = 0.25
+@export var boost_speed : int = 400
+@export var norm_speed : int = 250
 
+@export var broken_ship_texture : Texture2D
 
 @onready var detection_area : Area2D = $DetectionArea
 
@@ -18,6 +21,7 @@ var rotation_direction = 0
 
 
 func _ready() -> void:
+	update_from_global()
 	detection_area.body_entered.connect(_on_body_entered)
 
 func _physics_process(delta: float) -> void:
@@ -25,18 +29,31 @@ func _physics_process(delta: float) -> void:
 	rotate_ship(delta)
 	shoot()
 	update_from_global()
+	if health <= 0 or fuel <= 0:
+		$AnimatedSprite2D.animation = "broken"
 
 func _process(delta: float) -> void:
 	use_emp()
 	
 	return
 
+
+
 func move_ship():
+	if (Input.is_action_pressed("boost")):
+		speed = boost_speed
+	else:
+		speed = norm_speed
+	if fuel <= 0 or health <= 0:
+		return
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var normal_direction = input_direction.normalized().rotated(rotation)
 	velocity = normal_direction * speed
 	if normal_direction.length() > 0:
-		fuel -= 0.025
+		if speed == boost_speed:
+			fuel -= 0.05
+		else:
+			fuel -= 0.025
 		update_global()
 	move_and_slide()
 	
@@ -47,6 +64,8 @@ func rotate_ship(delta):
 
 
 func use_emp():
+	if (Global.level_index == 4):
+		return
 	if (!Input.is_action_just_pressed("emp")):
 		return
 	if emp_amount <= 0:
@@ -55,6 +74,7 @@ func use_emp():
 	emp.position = global_position
 	get_tree().current_scene.add_child(emp)
 	emp_amount -= 1
+	Global.player_emp_amount -=1
 	print("Spawning EMP")
 
 
@@ -80,7 +100,10 @@ func shoot():
 	update_global()
 
 func take_damage(amount: int) -> void:
+	$AudioStreamPlayer.pitch_scale = randf_range(0.2, 0.4)
+	$AudioStreamPlayer.play()
 	health -= amount
+	Global.shake_camera = true
 	update_global()
 
 func reset_shoot_cooldown():
@@ -89,7 +112,7 @@ func reset_shoot_cooldown():
 
 func _on_body_entered(body):
 	if body.is_in_group("asteroid"):
-		take_damage(body.damage)
+		take_damage(7)
 		body.explode()
 		print("Enemy Collision: Health = " + str(health))
 
@@ -104,3 +127,4 @@ func update_global():
 func update_from_global():
 	health = Global.player_health
 	fuel = Global.player_fuel
+	emp_amount = Global.player_emp_amount
