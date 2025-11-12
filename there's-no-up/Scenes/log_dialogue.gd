@@ -1,10 +1,10 @@
 extends Node2D
 
 @onready var line = $TextEdit
+@onready var audio_player = $AudioStreamPlayer  # Add this node in your scene
 
 var text_i = 0
-
-# Dictionary: level_index -> list of texts
+var typing_speed := 0.04  # seconds per character
 
 var level_texts = {
 	0: [
@@ -42,12 +42,11 @@ func _ready() -> void:
 		print("No texts for this level")
 
 func _process(delta):
-
 	var line_count = line.get_line_count()
 	var line_height = line.get_line_height()
 	line.custom_minimum_size.y = line_count * line_height + 8  # padding
 
-
+# --- TYPEWRITER EFFECT WITH AUDIO ---
 func show_text(level, index):
 	var texts = level_texts[level]
 	if index >= texts.size():
@@ -55,16 +54,22 @@ func show_text(level, index):
 		return
 
 	var entry = texts[index]
-	line.text = entry.text
 	text_i = index
-	var duration = 0
-	if entry.has(duration):
-		duration = entry.duration
-	else:
-		duration = 5
-	start_timer(level, duration)
+	animate_text(entry.text, level, entry.duration if entry.has("duration") else 5)
 
 
-func start_timer(level, duration):
+func animate_text(full_text: String, level: int, duration: float) -> void:
+	line.text = ""  # clear
+	if audio_player and audio_player.stream:
+			audio_player.play()
+	for i in full_text.length():
+		line.text += full_text[i]
+
+		# --- Play audio for this character ---
+		
+
+		await get_tree().create_timer(typing_speed).timeout
+	audio_player.stop()
+	# Wait remaining duration before showing next text
 	await get_tree().create_timer(duration).timeout
 	show_text(level, text_i + 1)

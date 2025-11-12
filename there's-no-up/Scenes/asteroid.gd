@@ -87,7 +87,7 @@ func explode():
 	if asteroid_type == VOLATILE:
 		volatile_exploder(0)
 		return
-	if asteroid_type == BIO or asteroid_type == METAL:
+	if asteroid_type == BIO or asteroid_type == METAL or asteroid_type == SHIPWRECK:
 		pick_up_exploder()
 	if asteroid_type == SHIPWRECK:
 		if Global.player_emp_amount <= 0:
@@ -101,9 +101,12 @@ func pick_up_exploder():
 	var chunk_speed = 200
 	var ch_type
 	if asteroid_type == BIO:
-		ch_type = true
-	else:
-		ch_type = false
+		ch_type = 0
+	elif asteroid_type == METAL:
+		ch_type = 1
+	elif asteroid_type == SHIPWRECK:
+		ch_type = 2
+		chunk_count = 1
 	queue_free()
 	for i in range(chunk_count):
 		# Calculate angle around the circle
@@ -111,7 +114,7 @@ func pick_up_exploder():
 		
 		# Instance a chunk
 		var chunk = pick_up.instantiate()
-		chunk.type_bool = ch_type
+		chunk.type_int = ch_type
 		get_tree().root.add_child(chunk)
 		
 		# Set its position and velocity

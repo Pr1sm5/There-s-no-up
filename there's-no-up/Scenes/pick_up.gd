@@ -5,27 +5,30 @@ extends Node2D
 
 @export var tex_fuel : Texture2D
 @export var tex_shield : Texture2D
+@export var tex_emp : Texture2D
 
 @export var fuel_sound : AudioStreamMP3
 @export var shield_sound : AudioStreamMP3
+@export var emp_sound : AudioStreamMP3
 
 var explode_speed = 200
 
-var type_bool = false
+var type_int = 0
 
 var direction
 var is_exploding = true
 
 
 func _ready() -> void:
-	if type_bool:
+	if type_int == 0:
 		$Sprite2D.texture = tex_fuel
 		$AudioStreamPlayer.stream = fuel_sound
-	else:
+	elif type_int == 1:
 		$Sprite2D.texture = tex_shield
 		$AudioStreamPlayer.stream = shield_sound
-	
-	
+	elif type_int == 2:
+		$Sprite2D.texture = tex_emp
+		$AudioStreamPlayer.stream = shield_sound
 	explo_timer()
 	
 	area.body_entered.connect(_on_body_entered)
@@ -41,15 +44,16 @@ func _on_body_entered(body):
 		$AudioStreamPlayer.pitch_scale = randf_range(0.8, 1.2)
 		$AudioStreamPlayer.play()
 		
-		if type_bool:
+		if type_int == 0:
 			Global.player_fuel += 3
 			if Global.player_fuel >= 100:
 				Global.player_fuel = 100
-		else:
+		elif type_int == 1:
 			Global.player_health += 2
 			if Global.player_health >= 100:
 				Global.player_health = 100
-		
+		elif type_int == 2:
+			Global.player_emp_amount = 1
 		body.update_from_global()
 		
 		var audio = $AudioStreamPlayer
