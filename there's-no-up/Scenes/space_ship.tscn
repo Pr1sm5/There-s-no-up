@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6cmdom0a2q5m"]
+[gd_scene load_steps=12 format=3 uid="uid://c6cmdom0a2q5m"]
 
 [ext_resource type="Script" uid="uid://dxp2o1j3ov00t" path="res://Assets/Scripts/SpaceShip.gd" id="1_65coa"]
 [ext_resource type="Texture2D" uid="uid://1iwnfbvulbfr" path="res://Assets/Sprites/Space_ship.png" id="2_yepno"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsxryouv3pu70" path="res://Scenes/emp.tscn" id="3_njdtb"]
 [ext_resource type="Texture2D" uid="uid://c6v127yisppoo" path="res://Assets/Sprites/broken_spaceship.png" id="4_m1d2h"]
 [ext_resource type="AudioStream" uid="uid://ua58hcrlsa1l" path="res://Assets/Sounds/taking damage.mp3" id="5_5dvug"]
+[ext_resource type="AudioStream" uid="uid://dtbc66gk5pade" path="res://Assets/Sounds/player death.mp3" id="5_pu3uw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1d2h"]
 atlas = ExtResource("4_m1d2h")
@@ -43,6 +44,7 @@ script = ExtResource("1_65coa")
 bullet_scene = ExtResource("3_lsdxw")
 emp_scene = ExtResource("3_njdtb")
 broken_ship_texture = ExtResource("4_m1d2h")
+death_sound = ExtResource("5_pu3uw")
 
 [node name="Bullets" type="Node" parent="."]
 

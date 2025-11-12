@@ -28,7 +28,7 @@ func _ready() -> void:
 		$AudioStreamPlayer.stream = shield_sound
 	elif type_int == 2:
 		$Sprite2D.texture = tex_emp
-		$AudioStreamPlayer.stream = shield_sound
+		$AudioStreamPlayer.stream = emp_sound
 	explo_timer()
 	
 	area.body_entered.connect(_on_body_entered)

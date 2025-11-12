@@ -12,9 +12,11 @@ extends CharacterBody2D
 @export var norm_speed : int = 250
 
 @export var broken_ship_texture : Texture2D
+@export var death_sound : AudioStreamMP3
 
 @onready var detection_area : Area2D = $DetectionArea
 
+var audio_playing = false
 
 var can_shoot : bool = true
 var rotation_direction = 0
@@ -31,6 +33,15 @@ func _physics_process(delta: float) -> void:
 	update_from_global()
 	if health <= 0 or fuel <= 0:
 		$AnimatedSprite2D.animation = "broken"
+		if !audio_playing:
+			$AudioStreamPlayer.stream = death_sound
+			$AudioStreamPlayer.volume_db = -10
+			$AudioStreamPlayer.pitch_scale = 1
+			$AudioStreamPlayer.stop()
+			$AudioStreamPlayer.play()
+			audio_playing = true
+
+
 
 func _process(delta: float) -> void:
 	use_emp()
@@ -79,6 +90,8 @@ func use_emp():
 
 
 func shoot():
+	if health <= 0 or fuel <= 0:
+		return
 	if (!Input.is_action_pressed("shoot")):
 		return
 	if (fuel <= 0):
@@ -100,8 +113,9 @@ func shoot():
 	update_global()
 
 func take_damage(amount: int) -> void:
-	$AudioStreamPlayer.pitch_scale = randf_range(0.2, 0.4)
-	$AudioStreamPlayer.play()
+	if !audio_playing:
+		$AudioStreamPlayer.pitch_scale = randf_range(0.2, 0.4)
+		$AudioStreamPlayer.play()
 	health -= amount
 	Global.shake_camera = true
 	update_global()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl8vluilqndxq"]
+[gd_scene load_steps=9 format=3 uid="uid://dl8vluilqndxq"]
 
 [ext_resource type="Texture2D" uid="uid://bi2g6hbgebj8k" path="res://Assets/Sprites/fuel_pickup.png" id="1_kcluc"]
 [ext_resource type="Script" uid="uid://bm7ndf4mk8m5q" path="res://Scenes/pick_up.gd" id="1_vjksl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://fmr5jwlucr01" path="res://Assets/Sprites/New_Piskel30.png" id="4_lgfxx"]
 [ext_resource type="AudioStream" uid="uid://ch3jlubsnjj6p" path="res://Assets/Sounds/refuel sound.mp3" id="4_p0lej"]
 [ext_resource type="AudioStream" uid="uid://bsryv20ee8l3" path="res://Assets/Sounds/health pickup.mp3" id="5_lgfxx"]
+[ext_resource type="AudioStream" uid="uid://bo3sapimr4ouc" path="res://Assets/Sounds/EMP pickup.mp3" id="7_qo4mo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vjksl"]
 radius = 21.023796
@@ -17,6 +18,7 @@ tex_shield = ExtResource("3_bss85")
 tex_emp = ExtResource("4_lgfxx")
 fuel_sound = ExtResource("4_p0lej")
 shield_sound = ExtResource("5_lgfxx")
+emp_sound = ExtResource("7_qo4mo")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
