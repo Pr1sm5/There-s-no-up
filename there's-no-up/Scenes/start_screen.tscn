@@ -1,0 +1,211 @@
+[gd_scene load_steps=18 format=3 uid="uid://bkp0kmees1pm5"]
+
+[ext_resource type="Texture2D" uid="uid://bkr5g2u8ldflt" path="res://Assets/Sprites/Space L1/Space Background(7).png" id="1_5e717"]
+[ext_resource type="Script" uid="uid://teymt0tm226q" path="res://Scenes/start_screen.gd" id="1_64bn7"]
+[ext_resource type="Texture2D" uid="uid://cnfysovgm6ro4" path="res://Assets/Sprites/NO-WAY-UP-11-12-2025.png" id="1_mtlf8"]
+[ext_resource type="Texture2D" uid="uid://c5lc7t8urdsj5" path="res://Assets/Sprites/Space L1/Space Background(8).png" id="2_mtlf8"]
+[ext_resource type="Texture2D" uid="uid://cypnmejpv2iao" path="res://Assets/Sprites/Button.png" id="2_nqnrp"]
+[ext_resource type="Script" uid="uid://cy4c5ts2bthet" path="res://Scenes/startGameButton.gd" id="3_5a7ho"]
+[ext_resource type="Texture2D" uid="uid://d1f0iyvarvgx1" path="res://Assets/Sprites/Space L1/Space Background(10).png" id="3_nqnrp"]
+[ext_resource type="Texture2D" uid="uid://ua0mhljuw3b7" path="res://Assets/Sprites/Space L1/Space Background(9).png" id="4_5a7ho"]
+[ext_resource type="Texture2D" uid="uid://c6v127yisppoo" path="res://Assets/Sprites/broken_spaceship.png" id="8_64bn7"]
+[ext_resource type="Texture2D" uid="uid://b7psyqkv2vyug" path="res://Assets/Sprites/asteroid4.png" id="9_64bn7"]
+[ext_resource type="Texture2D" uid="uid://drd5bl6qp1uml" path="res://Assets/Sprites/asteroid.png" id="10_357se"]
+[ext_resource type="Texture2D" uid="uid://ca31p4860tsd2" path="res://Assets/Sprites/asteroid3.png" id="11_hppi5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqnrp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5a7ho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssogg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_akot6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjuq2"]
+
+[node name="Start Screen" type="Node2D"]
+script = ExtResource("1_64bn7")
+
+[node name="StartLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="StartLayer"]
+offset_left = 440.0
+offset_top = 302.0
+offset_right = 576.0
+offset_bottom = 342.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_color = Color(0.5649617, 0.5649617, 0.5649615, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nqnrp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5a7ho")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ssogg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_akot6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rjuq2")
+text = "Explore Space"
+icon = ExtResource("2_nqnrp")
+icon_alignment = 1
+script = ExtResource("3_5a7ho")
+
+[node name="Helpbutton" type="Button" parent="StartLayer"]
+offset_left = 440.0
+offset_top = 397.0
+offset_right = 576.0
+offset_bottom = 437.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_color = Color(0.5649617, 0.5649617, 0.5649615, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nqnrp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5a7ho")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ssogg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_akot6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rjuq2")
+text = "Help"
+icon = ExtResource("2_nqnrp")
+icon_alignment = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 20)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+texture = ExtResource("1_5e717")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 40)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+texture_filter = 1
+texture = ExtResource("2_mtlf8")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 40)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+texture_filter = 1
+texture = ExtResource("3_nqnrp")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 30)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+texture_filter = 1
+texture = ExtResource("4_5a7ho")
+
+[node name="HelpLayer" type="CanvasLayer" parent="."]
+
+[node name="Back" type="Button" parent="HelpLayer"]
+offset_left = 440.0
+offset_top = 489.0
+offset_right = 576.0
+offset_bottom = 529.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_color = Color(0.5649617, 0.5649617, 0.5649615, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nqnrp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5a7ho")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ssogg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_akot6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rjuq2")
+text = "Back"
+icon = ExtResource("2_nqnrp")
+icon_alignment = 1
+
+[node name="TextEdit2" type="TextEdit" parent="HelpLayer"]
+offset_left = 790.0
+offset_top = 227.0
+offset_right = 1090.0
+offset_bottom = 618.20996
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_colors/current_line_color = Color(0.25, 0.25, 0.26, 0.8)
+theme_override_colors/word_highlighted_color = Color(0.5, 0.5, 0.5, 0.25)
+theme_override_font_sizes/font_size = 20
+text = "			Shipwreck
+			Refuels EMP
+
+			Biomatter-roid
+			Gives fuel
+
+			Metal-roid
+			Gives shield
+
+			Volatile-roid
+			explodes"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HelpLayer/TextEdit2"]
+texture_filter = 1
+position = Vector2(34, 38)
+scale = Vector2(1.7199951, 1.7199951)
+texture = ExtResource("8_64bn7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="HelpLayer/TextEdit2"]
+position = Vector2(34, 131)
+texture = ExtResource("9_64bn7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="HelpLayer/TextEdit2"]
+position = Vector2(34, 231)
+texture = ExtResource("10_357se")
+
+[node name="Sprite2D4" type="Sprite2D" parent="HelpLayer/TextEdit2"]
+position = Vector2(34, 329)
+texture = ExtResource("11_hppi5")
+
+[node name="TextEdit" type="TextEdit" parent="HelpLayer"]
+offset_left = 93.0
+offset_top = 226.0
+offset_right = 393.0
+offset_bottom = 617.20996
+theme_override_colors/font_readonly_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_colors/current_line_color = Color(0.2509804, 0.2509804, 0.25882354, 1)
+theme_override_font_sizes/font_size = 20
+text = "---Controls---
+Move forward --> W
+Move backwards --> S
+Rotate left --> A
+Rotate right --> D
+
+Shoot --> Space
+Boost --> Ship
+Use EMP --> F
+"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+tab_input_mode = false
+use_default_word_separators = false
+use_custom_word_separators = true
+
+[node name="Always on" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Always on"]
+position = Vector2(577, 155)
+scale = Vector2(0.595, 0.595)
+texture = ExtResource("1_mtlf8")

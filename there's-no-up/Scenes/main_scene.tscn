@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://cob2awvw28mv8"]
+[gd_scene load_steps=35 format=3 uid="uid://cob2awvw28mv8"]
 
 [ext_resource type="PackedScene" uid="uid://c6cmdom0a2q5m" path="res://Scenes/space_ship.tscn" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://k8g2iags4ykw" path="res://Scenes/asteroid.tscn" id="2_6l7je"]
-[ext_resource type="AudioStream" uid="uid://dtbc66gk5pade" path="res://Assets/Sounds/player death.mp3" id="2_mplvr"]
 [ext_resource type="Script" uid="uid://d1vin68uxb8y6" path="res://camera_2d.gd" id="2_s8qe6"]
 [ext_resource type="PackedScene" uid="uid://chqcv7trpupsg" path="res://Scenes/log_dialogue.tscn" id="3_7ewk0"]
 [ext_resource type="Script" uid="uid://b8og2hbk54dx6" path="res://Scenes/health_bar.gd" id="4_x6ack"]
@@ -39,15 +38,6 @@
 [node name="MainScene" type="Node2D"]
 
 [node name="SpaceShip" parent="." instance=ExtResource("1_52fb6")]
-speed = 250
-rotation_speed = 3.0
-health = 100
-fuel = 100.0
-emp_amount = 1
-shoot_cooldown = 0.25
-boost_speed = 400
-norm_speed = 250
-death_sound = ExtResource("2_mplvr")
 
 [node name="Camera2D" type="Camera2D" parent="SpaceShip"]
 limit_enabled = false

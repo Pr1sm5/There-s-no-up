@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0s7iglnqgrhr"]
+
+[ext_resource type="Texture2D" uid="uid://cypnmejpv2iao" path="res://Assets/Sprites/Button.png" id="1_rjluv"]
+[ext_resource type="Script" uid="uid://cy4c5ts2bthet" path="res://Scenes/startGameButton.gd" id="2_gjtdd"]
+[ext_resource type="Texture2D" uid="uid://h3mfjnlqidcs" path="res://Assets/Sprites/FINAL-PING-RECIEVED-11-12-2025.png" id="3_uylih"]
+[ext_resource type="Texture2D" uid="uid://bkr5g2u8ldflt" path="res://Assets/Sprites/Space L1/Space Background(7).png" id="4_3817r"]
+[ext_resource type="Texture2D" uid="uid://c5lc7t8urdsj5" path="res://Assets/Sprites/Space L1/Space Background(8).png" id="5_mitgx"]
+[ext_resource type="Texture2D" uid="uid://d1f0iyvarvgx1" path="res://Assets/Sprites/Space L1/Space Background(10).png" id="6_gs2es"]
+[ext_resource type="Texture2D" uid="uid://ua0mhljuw3b7" path="res://Assets/Sprites/Space L1/Space Background(9).png" id="7_asocn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61f6c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqply"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i8bap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3ik1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4sv83"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 435.0
+offset_top = 359.0
+offset_right = 571.0
+offset_bottom = 399.0
+scale = Vector2(2, 2)
+theme_override_colors/icon_hover_color = Color(0.5649617, 0.5649617, 0.5649615, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_61f6c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xqply")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i8bap")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e3ik1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4sv83")
+text = "Restart
+"
+icon = ExtResource("1_rjluv")
+icon_alignment = 1
+script = ExtResource("2_gjtdd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(583, 168)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("3_uylih")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 20)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+texture = ExtResource("4_3817r")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 40)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+texture_filter = 1
+texture = ExtResource("5_mitgx")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 40)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+texture_filter = 1
+texture = ExtResource("6_gs2es")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(0, 30)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+texture_filter = 1
+texture = ExtResource("7_asocn")

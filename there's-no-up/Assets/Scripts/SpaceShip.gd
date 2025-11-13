@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	rotate_ship(delta)
 	shoot()
 	update_from_global()
-	if health <= 0 or fuel <= 0:
+	if health <= 0:
 		$AnimatedSprite2D.animation = "broken"
 		if !audio_playing:
 			$AudioStreamPlayer.stream = death_sound
