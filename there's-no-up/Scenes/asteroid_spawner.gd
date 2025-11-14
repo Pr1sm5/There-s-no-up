@@ -24,7 +24,7 @@ func randomise_type():
 	var random_picker := randi_range(0, 100)
 	
 	# --- BASE CHANCES ---
-	var bio_chance = max(15 - level_index * 3, 2)       # 15 → 12 → 9 → 6 → 2
+	var bio_chance = max(12 - level_index * 3, 2)       # 15 → 12 → 9 → 6 → 2
 	var metal_chance = max(10 - level_index * 3, 2)     # 10 → 7 → 4 → 2 → 2
 	var volatile_chance = 10 + level_index * 3          # 10 → 13 → 16 → 19 → 22
 	var shipwreck_chance := -1

@@ -154,7 +154,7 @@ empty_selection_clipboard_enabled = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HelpLayer/TextEdit2"]
 texture_filter = 1
-position = Vector2(34, 38)
+position = Vector2(34, 39)
 scale = Vector2(1.7199951, 1.7199951)
 texture = ExtResource("8_64bn7")
 
